@@ -9,9 +9,6 @@ https://www.w3schools.com/git/
 ###################################################################################
 Gerry_GitRepo
 https://github.com/GAH-Man
-ghall4@emory.edu
-GAH-Man
-Daughter@
 
 Personal Access Token (PAT):
 
