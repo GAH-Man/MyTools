@@ -1,0 +1,321 @@
+Training
+
+UDEMY:
+https://www.udemy.com/course/git-expert-4-hours/learn/lecture/11682292#overview
+
+W3Schools:
+https://www.w3schools.com/git/
+
+###################################################################################
+Gerry_GitRepo
+https://github.com/GAH-Man
+ghall4@emory.edu
+GAH-Man
+Daughter@
+
+Personal Access Token (PAT):
+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
+expires 16 Feburuary
+
+Step 1: Generate a PAT (personal access token) on GitHub
+
+    Log in to your GitHub account on the web.
+    Click your profile photo in the upper-right corner, then click Settings.
+    In the left sidebar, click Developer settings.
+    In the left sidebar, under "Personal access tokens", click Tokens (classic).
+    Click Generate new token, then select Generate new token (classic).
+    Give your token a descriptive Note
+    (e.g., "Git CLI access"), set an Expiration date, and select the necessary scopes (permissions).
+    For general repository access, selecting the repo scope is usually sufficient.
+    Click Generate token at the bottom of the page.
+    Immediately copy the generated token string. You will not be able
+    to see it again once you leave the page. Store it securely
+
+Step 2: Update Your Local Credentials
+    When you run a Git command that requires authentication (like git push or git pull)
+    in your local repository's terminal,
+    Git will prompt you for your username and password.
+
+        Username: Enter your GitHub username. - GAH-Man
+        Password: Paste the Personal Access Token you generated in
+        Step 1 instead of your actual GitHub password.
+
+*****Step 3: Cache Your Credentials (Optional but Recommended)
+    DID NOT DO!!!!!!
+    To avoid entering the PAT every time,
+    configure Git's credential helper to store it securely:
+
+    Windows: Use the Git Credential Manager included with Git for Windows.
+    It usually works automatically after the first successful login,
+    or you can manage entries in the Windows Credential Manager.
+
+     macOS: git config --global credential.helper osxkeychain.
+
+     Linux: git config --global credential.helper store
+     (less secure, saves to a plain text file)
+     or use libsecret if you have a desktop environment.
+
+After setting up the credential helper,
+the next time you push, enter your username and PAT,
+and it should be cached for future use.
+  *****Did not due this step, did not want to break Emory GitHub access.
+###################################################################################
+Install Git
+
+https://git-scm.com/install/mac
+
+There are several options for installing Git on macOS.
+Note that any non-source distributions are provided by third parties,
+and may not be up to date with the latest source release.
+
+Choose one of the following options for installing Git on macOS:
+Homebrew
+Install homebrew if you don't already have it, then:
+$ brew install git
+
+MacPorts
+Install MacPorts if you don't already have it, then:
+$ sudo port install git
+
+Xcode Command Line Tools
+Apple ships a binary package of Git with Xcode Command Line Tools.
+You can install this via:
+$ xcode-select --install
+
+
+Installing git-gui
+If you would like to install git-gui and gitk,
+git's commit GUI and interactive history browser, you can do so using homebrew:
+$ brew install git-gui
+
+
+Git CheatSheet:
+https://github.com/joshnh/Git-Commands
+
+WorkingRepo -> StagingRepo -> RemoteRepo
+
+***************
+Git Basics
+
+1.  Create Git Repository
+cd into the directory that you want to add to Git.
+the repository name will be the name of the directory.
+Then run:
+git init
+
+
+2.  Add to Staging Repo (git add)
+add Single file:
+  git add file_name
+add Multiple files:
+git add .
+
+
+3.  Remove from Staging (git rm):
+git rm --cached file_name
+What it does
+Removes the file from the Git index (staging area) only.
+Keeps the file on your local working repo.
+
+Remove from Staging (unstage) and from local file system (delete permanently):
+git rm -f file_name
+What it does
+Removes the file from both Git and your working directory
+Deletes the file from your filesystem
+
+
+4. Add to Git Remote Repo (commit)
+git commit -m "Your message"
+What it does
+Commits only what is already staged (in the index)
+You must explicitly run git add (or similar) first
+
+git commit -a -m "Your message"
+What it does
+Automatically stages and commits all tracked files that have been:
+Modified
+Deleted
+Skips the need for git add for those files.
+What it does NOT do
+Does not include new (untracked) files
+
+
+5.  View commits:
+git log
+
+
+6. Set Default Editor
+Set VS Code as Default Editor
+git config --global core.editor "code --wait"
+
+Set Notepad as Default Editor
+git config --global core.editor "notepad"
+
+
+7.  Updating or Uninstalling Git
+Update:
+Download and run the latest installer, or use your package manager
+(e.g., brew upgrade git or sudo apt-get upgrade git).
+It's a good idea to keep Git up to date for the latest features and security fixes.
+Uninstall:
+Use "Add or Remove Programs" on Windows,
+or your package manager on Mac/Linux.
+
+
+8.  Viewing Your Configuration
+git config --list
+credential.helper=osxkeychain
+init.defaultbranch=main
+user.email=ghall4@emory.edu
+user.name=Gerry Hall
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+core.ignorecase=true
+core.precomposeunicode=true
+
+View a Specific Setting;
+git config user.name
+
+Set Default Branch Name:
+
+
+9. Git checkout
+git log
+
+(base) GHALL4@OIT1-GHALL4 MySoftware % git log
+commit 4b25c62f46c15941be5ac47b1b6b0303612eb44f (HEAD -> main)
+Author: Gerry Hall <ghall4@emory.edu>
+Date:   Wed Dec 17 21:06:24 2025 -0500
+
+    added text to foo.txt
+
+commit ae38f29ae62d07b9fd92960e6238f5c016db7c19
+Author: Gerry Hall <ghall4@emory.edu>
+Date:   Wed Dec 17 20:57:22 2025 -0500
+
+    added foo.txt
+
+commit 6cb3d936d7d12f22a13ddffa3e5e64beaa401d9b
+Author: Gerry Hall <ghall4@emory.edu>
+Date:   Wed Dec 17 14:35:43 2025 -0500
+
+git checkout ae38f29ae62d07b9fd92960e6238f5c016db7c19
+
+
+10.  Git revert and reset
+git log --oneline
+
+git revert commitID
+  - reverts to the commit previous to commitID
+  - goes back one commit only
+
+git reset --hard commitID
+  - resets to the commitID
+  - goes back more than one commit only
+
+
+11.  Git reset.
+Types of Git reset.
+  soft, mixed, hard
+  git reset --soft <commitID>, no changes in the staging repo or working
+     Only resets the HEAD,
+      leaving both the staging area and the working directory unchanged.
+      Use Case:
+        Use --soft when you want to adjust the commit history
+        (e.g., remove the latest commit)
+        but keep all the changes in both the staging area
+        and the working directory, allowing you to commit them again.
+
+  git reset --mixed <commitID>, reverts changes in staging repo (the default)
+    Resets the HEAD and updates the staging area,
+      but leaves the working directory unchanged.
+      Use Case:
+        Use --mixed when you want to keep your working changes
+        but remove them from the staging area.
+        This is useful if you realize the changes
+        should not be staged yet but you still want to continue working on them.
+
+  git reset --hard <commitID>, removes changes in both staging repo and working directory.
+    Resets the HEAD, updates the staging area,
+      and resets the working directory to match the specified commit.
+    Use Case:
+      Use --hard when you want to completely discard any changes
+      in the working directory and staging area
+      and revert to a specific commit.
+      This is often used to undo unwanted changes that are no longer needed.
+
+
+12. .gitignore
+#clear the memory cache
+git rm -r --cached .
+git add .
+
+(ex.)
+# ignore individual files
+a.txt
+b.txt
+c.txt
+# ignore all files in Dir
+Dir/*
+
+See files that Git will ignore:
+git status --ignored
+
+
+***************
+Git Branches
+1.  Create
+create branch (only):
+  git branch NameOfBranch
+
+create and switch to branch
+  git checkout -b NameOfBranch
+
+switches back to master
+  git checkout master
+    NOTE:  'master' may be 'main' instead
+
+list all branches:
+  git branch -a
+
+delete branch:
+  git branch -d NameOfBranch
+
+2.  Merging
+change to branch you want to merge to
+(the branch you want to add changes TO):
+  git checkout BranchName
+add merge from source branch changes
+(the branch you want to add changes FROM):
+  git merge MergeBranchName
+
+
+***************
+Git Hub
+
+…or create a new repository on the command line
+echo "# MultiRegion_AGA" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/GAH-Man/MultiRegion_AGA.git
+git push -u origin main
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/GAH-Man/MultiRegion_AGA.git
+git branch -M main
+git push -u origin main
+
+
+
+***************
+Git and Git Hub
+
+1.  Create remote repository.
+      - must be created in Git Hub
+      - git init
+      - git remote add origin https://UrLFromGit
+      - git remote -v
