@@ -1,5 +1,7 @@
 #Ignore log files
 *.log
 ssl_checker/*.log
+!script_output/*.log
+
 
 
