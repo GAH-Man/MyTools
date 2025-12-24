@@ -97,7 +97,7 @@ def main():
     start_time = datetime.now().strftime("%Y%m%d_%H%M%S")
     # Clean hostname for filename (replace special chars)
     clean_hostname = hostname.replace(':', '_').replace('/', '_')
-    log_filename = f"script_output/ssl_check_{clean_hostname}_{port}_{start_time}.log"
+    log_filename = f"ssl_check_{clean_hostname}_{port}_{start_time}.log"
 
     # Create header message
     header = f"SSL Certificate Monitoring Started"

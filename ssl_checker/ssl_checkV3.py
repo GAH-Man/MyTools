@@ -111,7 +111,7 @@ Examples:
     start_time = datetime.now().strftime("%Y%m%d_%H%M%S")
     # Clean website name for filename (replace special chars)
     clean_website = website.replace(':', '_').replace('/', '_').replace('.', '_')
-    log_filename = f"script_output/ssl_check_{clean_website}_{port}_{start_time}.log"
+    log_filename = f"ssl_check_{clean_website}_{port}_{start_time}.log"
 
     # Create header message
     header = f"SSL Certificate Monitoring Started"
