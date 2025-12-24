@@ -50,7 +50,7 @@ def main():
 
     # Generate log filename with timestamp
     start_time = datetime.now().strftime("%Y%m%d_%H%M%S")
-    log_filename = f"ssl_check_{hostname}_{start_time}.log"
+    log_filename = f"script_output/ssl_check_{hostname}_{start_time}.log"
 
     # Parse command line arguments
     if len(sys.argv) > 1:
