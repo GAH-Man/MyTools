@@ -14,8 +14,6 @@ GAH-Man
 Daughter@
 
 Personal Access Token (PAT):
-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
-expires 16 Feburuary
 
 Step 1: Generate a PAT (personal access token) on GitHub
 
