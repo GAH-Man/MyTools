@@ -259,6 +259,57 @@ See files that Git will ignore:
 git status --ignored
 
 
+13.  Steps to Ignore Untracked Log Files
+Open or create the .gitignore file in your project's root directory
+using a text editor or the command line.
+touch .gitignore
+
+Add patterns for the log files you want to ignore.
+You can use a specific filename,
+a wildcard for all files with a .log extension,
+or an entire directory.
+
+To ignore a single specific file:
+  debug.log
+
+To ignore all files ending with .log in any directory:
+  *.log
+
+To ignore a specific directory named logs and all its contents:
+  logs/
+
+To ignore all log files,
+but make an exception for a specific important log file:
+  *.log
+  !important.log
+
+Save the .gitignore file.
+
+Stage and commit the .gitignore file to your repository
+so the ignore rules are shared with other contributors.
+  git add .gitignore
+  git commit -m "Add log files to .gitignore"
+
+13-2.  Steps to Ignore Already Tracked Log Files
+Open the .gitignore file in your project's root directory
+  and add the patterns as described above (e.g., *.log or logs/).
+
+For a single file
+  git rm --cached debug.log
+
+For all .log files:
+  git rm --cached *.log
+
+For an entire directory (use the -r flag for recursive removal):
+  git rm -r --cached logs/
+
+Commit the changes to record the file removals in the repository's history.
+  git commit -m "Stop tracking log files"
+
+Push your changes to the remote repository>
+  git push
+
+
 ***************
 Git Branches
 1.  Create
