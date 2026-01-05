@@ -4,4 +4,7 @@ ssl_checker/*.log
 !script_output/*.log
 
 
+# Mac system benerated file
+.DS_Store
+
 
